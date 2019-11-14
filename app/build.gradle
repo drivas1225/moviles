@@ -39,6 +39,7 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
     implementation 'com.android.support:multidex:1.0.3'
 
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
@@ -54,6 +55,10 @@ dependencies {
 
     implementation "com.xwray:groupie:2.7.0"
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // google vision gradle
+//    implementation 'com.google.android.gms:play-services-vision:15.0.2'
+
 
 
 }
