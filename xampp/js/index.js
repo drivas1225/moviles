@@ -1,6 +1,26 @@
 //$(document).ready(function () {
-    TotalPlayers = 4;
+    TotalPlayers = 0;
+    dicKeys = {};
     
+    function setUsers(numb){
+        /*<li class="nav-item">
+            <div style="color: white">
+                <h4 class="nav-link" id="nameUser4">Player 4</h4>
+                <div class="d-flex justify-content-center">
+                    <div id="scP4" class="col my-auto">Score</div>
+                    <div class="col imageContainerP4">
+                        <img id="imgP4" width="150" src="TypePoints/null0.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </li>*/
+        if(dicKeys[numb] == undefined){         
+            $('#allUsers').append('<li class="nav-item"><div style="color: white">  <h4 class="nav-link" id="nameUser'+numb+'">Player '+numb+'</h4><div class="d-flex justify-content-center"> <div id="scP'+numb+'" class="col my-auto">Score</div>  <div class="col imageContainerP4">  <img id="imgP'+numb+'" width="150" src="TypePoints/null0.png" alt=""> </div> </div> </div> </li>');
+            dicKeys[numb] = 1;
+            setTotalPlayers(Object.keys(dicKeys).length);
+        }
+    }
+
     /*document.getElementById("imgP1").style.animation = "fadeout 2s forwards";
     document.getElementById("imgP2").style.animation = "fadeout 2s forwards";
     document.getElementById("imgP3").style.animation = "fadeout 2s forwards";
@@ -35,12 +55,12 @@
         }         
     }
 
-    function showNameUsers(numUser, nameUser, keyIdUser){
-        //$(this).prev('li').prop('id', 'newId');
-        $("#nameUser"+numUser).text(nameUser);
-        $("#nameUser"+numUser).attr('id','nameUser'+keyIdUser);
+    function showNameUsers(/*numUser,*/ nameUser, keyIdUser){
+        $("#nameUser" + keyIdUser).text(nameUser);      
+        //$("#nameUser"+numUser).text(nameUser);
+        /*$("#nameUser"+numUser).attr('id','nameUser'+keyIdUser);
         $('#imgP'+numUser).attr('id','imgP'+keyIdUser);
-        $('#scP'+numUser).attr('id','scP'+keyIdUser);
+        $('#scP'+numUser).attr('id','scP'+keyIdUser);*/
     }
     
     
