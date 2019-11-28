@@ -123,14 +123,17 @@ function gotData(data){
        var idPlayer = d.val().id;
        var actPoint = d.val().perfeccion;
        var numplayer = i;
-       var scoreTotal = d.val().puntaje; 
+       //var scoreTotal = d.val().puntaje; 
        var keyUser =  d.ref.key;  
+       ref.child('players/'+keyUser+'/puntaje').on('value',function(scoreTotal, keyUser){
+            console.log('scoreTotal '+scoreTotal.val()+ 'keyUser: '+ ref.child('players/jadIdvt9CJRItdJP7s39n9akV6s1').key );  //TODO FIX THIS KEY 
+
+            showTotalScore(scoreTotal, keyUser); 
+       }, error);
        console.log( actPoint+" - "+ i);     
-       getUserNamebyKey(keyUser, numplayer, keyUser );
-       
-       //keyUser = keyUser.slice(keyUser.length - 1, keyUser.length);    
+       getUserNamebyKey(keyUser, numplayer, keyUser );      
        showImageActualPoint(actPoint, keyUser);  
-       showTotalScore(scoreTotal,keyUser); 
+       //showTotalScore(scoreTotal,keyUser); 
    });
 }
 
