@@ -62,10 +62,10 @@ function createRoom(){
 }
 
 //TODO: Falta testear
-function getUserNamebyKey(keyUser, numUser){
+function getUserNamebyKey(keyUser/*, numUser*/){
     var refT = database.ref('users').child(keyUser).on('value',function(s){        
         var strName = s.val().username;        
-        showNameUsers(numUser, strName,keyUser);
+        showNameUsers(/*numUser,*/ strName,keyUser);
     });
 }
 
@@ -130,6 +130,7 @@ function gotData(data){
       
    data.forEach(function(d){       
        i+=1;
+       
        var idPlayer = d.val().id;
        var actPoint = d.val().perfeccion;
        var numplayer = i;
@@ -140,7 +141,8 @@ function gotData(data){
             showTotalScore(scoreTotal, keyUser); 
        }, error);*/
        console.log( actPoint+" - "+ i);     
-       getUserNamebyKey(keyUser, numplayer, keyUser );             
+       setUsers(keyUser);
+       getUserNamebyKey(keyUser/*, numplayer*/ );             
        showTotalScore(scoreTotal, keyUser, actPoint); 
        //showImageActualPoint(actPoint, keyUser);  
    });
