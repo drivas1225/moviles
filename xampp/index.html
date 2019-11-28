@@ -1,9 +1,56 @@
-//$(document).ready(function () {
-    TotalPlayers = 0;
-    dicKeys = {};
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            
+        <link rel="stylesheet" type="text/css" href="css/styles.css"> 
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">       
     
-    function setUsers(numb){
-        /*<li class="nav-item">
+           
+        
+        <title>Just Dance</title>
+    </head>
+<body class="bg-imag">
+<header id="head" class="">   
+    <ul id="allUsers" class="pt-2 nav nav-fill blur-hearder">
+        <!--li class="nav-item ">
+            <div style="color: white">
+                <h4 class="nav-link" id="nameUser1" >Player 1</h4>
+                <div class="d-flex justify-content-center">
+                    <div id="scP1" class="col my-auto">Score</div>
+                    <div class="col imageContainerP1">
+                        <img id="imgP1" width="150" src="TypePoints/null0.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div style="color: white">
+                <h4 class="nav-link" id="nameUser2">Player 2</h4>
+                <div class="row d-flex justify-content-center">
+                    <div id="scP2" class="col my-auto">Score</div>
+                    <div class="col imageContainerP2">
+                        <img id="imgP2" width="150" src="TypePoints/null0.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div style="color: white">
+                <h4 class="nav-link" id="nameUser3">Player 3</h4>
+                <div class="d-flex justify-content-center">
+                    <div id="scP3" class="col my-auto">Score</div>
+                    <div class="col imageContainerP3">
+                        <img id="imgP3" width="150" src="TypePoints/null0.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
             <div style="color: white">
                 <h4 class="nav-link" id="nameUser4">Player 4</h4>
                 <div class="d-flex justify-content-center">
@@ -13,68 +60,40 @@
                     </div>
                 </div>
             </div>
-        </li>*/
-        if(dicKeys[numb] == undefined){         
-            $('#allUsers').append('<li class="nav-item"><div style="color: white">  <h4 class="nav-link" id="nameUser'+numb+'">Player '+numb+'</h4><div class="d-flex justify-content-center"> <div id="scP'+numb+'" class="col my-auto text-right">Score</div>  <div class="col text-left imageContainerP4 ">  <img id="imgP'+numb+'" width="150" src="TypePoints/null0.png" alt=""> </div> </div> </div> </li>');
-            dicKeys[numb] = 1;
-            setTotalPlayers(Object.keys(dicKeys).length);
-        }
-    }
+        </li-->
+    </ul>
+</header>
 
-    /*document.getElementById("imgP1").style.animation = "fadeout 2s forwards";
-    document.getElementById("imgP2").style.animation = "fadeout 2s forwards";
-    document.getElementById("imgP3").style.animation = "fadeout 2s forwards";
-    document.getElementById("imgP4").style.animation = "fadeout 2s forwards";*/
-    /*$('#imgP1').cycle({
-        fx: 'fade' //style of effect
-    });*/
+<div>
 
-    function showImageActualPoint(typePoint, numPlayer ){
-        console.log(numPlayer);
-        if (typePoint == 1){
-            $('#imgP'+numPlayer).attr('src','TypePoints/good2.png');
-            $('#imgP'+numPlayer).fadeIn("slow");
-            $('#imgP'+numPlayer).fadeOut("slow");
-           
-        }else if (typePoint == 2){
-            $('#imgP'+numPlayer).attr('src','TypePoints/perfect1.png');   
-            $('#imgP'+numPlayer).fadeIn("slow");
-            $('#imgP'+numPlayer).fadeOut("slow");
-        }else{
-            $('#imgP'+numPlayer).attr('src','TypePoints/bad3.png');
-            $('#imgP'+numPlayer).fadeIn("slow");
-            $('#imgP'+numPlayer).fadeOut("slow");
-        }
-    }
+</div>
+<!--iframe width="420" height="315" src="https://www.youtube.com/embed/pJwmSyJHkXk" frameborder="0" allowfullscreen></iframe-->
+<div class="row d-flex justify-content-center">
+    <video id="myvideo" unmuted width="1150" allowfullscreen controls class="fullscreen-video"><!--unmuted autoplay-->>
+        <source style="display: block; margin: auto;" src="video2.mp4" type="video/mp4">    
+        Your browser does not support HTML5 video.
+    </video>
+</div>
+<div class="col text-center">
+    <a id="myNumberRoom" style="color: white;">Room </a>
+    <button type="button" id="btnPlay" class="btn btn-primary">Play</button>
+</div>
 
-    function showTotalScore(scoreTotal,numplayer, actPoint){        
-        if($('#scP'+numplayer).text() != ('Score: '+scoreTotal) ) {
-            console.log('si');
-            showImageActualPoint(actPoint, numplayer); 
-            $('#scP'+numplayer).text('Score: '+scoreTotal);
-        }         
-    }
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
 
-    function showNameUsers(/*numUser,*/ nameUser, keyIdUser){
-        $("#nameUser" + keyIdUser).text(nameUser);      
-        //$("#nameUser"+numUser).text(nameUser);
-        /*$("#nameUser"+numUser).attr('id','nameUser'+keyIdUser);
-        $('#imgP'+numUser).attr('id','imgP'+keyIdUser);
-        $('#scP'+numUser).attr('id','scP'+keyIdUser);*/
-    }
+        <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+
+    <script src="js/conf.js" type="text/javascript"></script>
+    <script src="js/index.js" type="text/javascript"></script>  
     
-    
-    /*$('div.col.imageContainerP1').click(function () {            
-        showImageActualPoint(1,'1');
-    });   
-    $('div.col.imageContainerP2').click(function () {            
-        showImageActualPoint(3,'2');
-    });   
-    $('div.col.imageContainerP3').click(function () {            
-        showImageActualPoint(2,'3');
-    });   
-    $('div.col.imageContainerP4').click(function () {            
-        showImageActualPoint(1,'4');
-    });                
+ 
 
-});*/
+</body>
+
+
+
+</html>
