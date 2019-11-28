@@ -111,6 +111,16 @@ function setData(pointNEW, userNumb){
 /* Function for testing End */
 
 
+function getParent ( snapshot ) { 
+    // You can get the reference (A Firebase object) from a snapshot 
+    // using .ref(). 
+    var ref = snapshot .  ref (); 
+    // Now simply find the parent and return the name. 
+    return ref .  parent ().  name (); 
+} 
+  
+
+
 function gotData(data){
    var scoreeee = data.val()
    //var keys = Object.keys(scoreeee);
@@ -123,17 +133,16 @@ function gotData(data){
        var idPlayer = d.val().id;
        var actPoint = d.val().perfeccion;
        var numplayer = i;
-       //var scoreTotal = d.val().puntaje; 
+       var scoreTotal = d.val().puntaje; 
        var keyUser =  d.ref.key;  
-       ref.child('players/'+keyUser+'/puntaje').on('value',function(scoreTotal, keyUser){
-            console.log('scoreTotal '+scoreTotal.val()+ 'keyUser: '+ ref.child('players/jadIdvt9CJRItdJP7s39n9akV6s1').key );  //TODO FIX THIS KEY 
-
+       /*ref.child('players/'+keyUser+'/puntaje').on('value',function(scoreTotal, keyUser){
+            console.log('scoreTotal '+scoreTotal.val()+ 'keyUser: '+ scoreTotal.key.key );  //TODO FIX THIS KEY 
             showTotalScore(scoreTotal, keyUser); 
-       }, error);
+       }, error);*/
        console.log( actPoint+" - "+ i);     
-       getUserNamebyKey(keyUser, numplayer, keyUser );      
-       showImageActualPoint(actPoint, keyUser);  
-       //showTotalScore(scoreTotal,keyUser); 
+       getUserNamebyKey(keyUser, numplayer, keyUser );             
+       showTotalScore(scoreTotal, keyUser, actPoint); 
+       //showImageActualPoint(actPoint, keyUser);  
    });
 }
 
@@ -152,4 +161,3 @@ createRoom();
 getTotalPlayers();
 ref.child('players').on('value', gotData, error);
 console.log(numberRoom);
-
