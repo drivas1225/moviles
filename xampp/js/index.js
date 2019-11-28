@@ -27,8 +27,12 @@
         }
     }
 
-    function showTotalScore(scoreTotal,numplayer){
-        $('#scP'+numplayer).text('Score: '+scoreTotal);
+    function showTotalScore(scoreTotal,numplayer, actPoint){        
+        if($('#scP'+numplayer).text() != ('Score: '+scoreTotal) ) {
+            console.log('si');
+            showImageActualPoint(actPoint, numplayer); 
+            $('#scP'+numplayer).text('Score: '+scoreTotal);
+        }         
     }
 
     function showNameUsers(numUser, nameUser, keyIdUser){
@@ -54,4 +58,3 @@
     });                
 
 });*/
-
